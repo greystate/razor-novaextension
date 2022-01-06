@@ -1,10 +1,19 @@
+@inherits Umbraco.Web.ViewModel<ClassName>
 @{
-	Helpers.GetAssetPath(file)	
+	// Single line comment
+	var path = Helpers.GetAssetPath(file);
+	
+	/*
+	Multi-line comment
+	*/
 }
 <p>
-	@(Model Helpers.GetAssetPath(file))
+	@* Razor comment *@
+	<!-- HTML comment -->
+	
+	@path
 </p>
 
-<p>
+<p data-path="@(path)">
 	@* Hey there *@
 </p>
