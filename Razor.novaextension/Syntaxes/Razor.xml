@@ -66,6 +66,7 @@
         <scope name="razor.output">
             <starts-with>
                 <expression>(@)(?!\()([a-zA-Z0-9\.\_\(\)]+)</expression>
+                <capture number="1" name="razor.operator" />
             </starts-with>
             <ends-with>
                 <expression>$</expression>
