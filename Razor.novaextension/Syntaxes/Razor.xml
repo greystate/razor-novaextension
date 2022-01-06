@@ -60,6 +60,7 @@
             </ends-with>
             <subscopes>
                 <include syntax="self" collection="keywords" />
+                <include syntax="csharp" />
             </subscopes>
         </scope>
         
