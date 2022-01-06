@@ -109,8 +109,18 @@
                     <string>Model</string>
                     <string>Partial</string>
                     <string>Html</string>
+                    <string>Layout</string>
+                    <string>Raw</string>
                 </strings>
             </scope>
+            
+            <scope name="razor.keyword.construct">
+                <strings>
+                    <string>var</string>
+                    
+                </strings>
+            </scope>
+            
             <scope name="umbraco.keyword">
                 <strings>
                     <string>Umbraco</string>
