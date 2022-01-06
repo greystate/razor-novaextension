@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="razor">
+    <meta>
+        <name>Razor</name>
+        <type>markup</type>
+        <preferred-file-extension>cshtml</preferred-file-extension>
+    </meta>
+    
+    <detectors>
+        <extension priority="1.5">cshtml</extension>
+    </detectors>
+    
+    <comments>
+        <multiline>
+            <starts-with>
+                <expression>@*</expression>
+            </starts-with>
+            <ends-with>
+                <expression>*@</expression>
+            </ends-with>
+        </multiline>
+    </comments>
+    
+    <brackets>
+        <pair open="&lt;" close="&gt;" />
+    </brackets>
+    
+    <surrounding-pairs>
+        <pair open="&lt;" close="&gt;" />
+        <pair open="{" close="}" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+        <pair open="&apos;" close="&apos;" />
+        <pair open="&quot;" close="&quot;" />
+    </surrounding-pairs>
+    
+    <scopes>
+        <include syntax="html" />
+    </scopes>
+    
+    <template-scopes>
+        <!-- Comments -->
+        <scope name="razor.comment.block" spell-check="true">
+            <starts-with>
+                <expression>@\*</expression>
+            </starts-with>
+            <ends-with>
+                <expression>\*@</expression>
+            </ends-with>
+        </scope>
+        
+        <scope name="razor.code.block">
+            <starts-with>
+                <expression>(@\{)</expression>
+                <capture number="1" name="razor.operator"/>
+            </starts-with>
+            <ends-with>
+                <expression>(\})</expression>
+                <capture number="1" name="razor.operator"/>
+            </ends-with>
+            <subscopes>
+                <include syntax="self" collection="keywords" />
+            </subscopes>
+        </scope>
+        
+        <scope name="razor.output">
+            <starts-with>
+                <expression>(@)([a-zA-Z0-9\.\_\(\)]+)</expression>
+            </starts-with>
+            <ends-with>
+                <expression>$</expression>
+            </ends-with>
+        </scope>
+        
+        <scope name="razor.output.wrapped">
+            <starts-with>
+                <expression>(@\()</expression>
+                <capture number="1" name="razor.operator"/>
+            </starts-with>
+            <ends-with>
+                <expression>(\))</expression>
+                <capture number="1" name="razor.operator"/>
+            </ends-with>
+            <subscopes>
+                <scope name="razor.function">
+                    <expression>\w+\([^)]*\)</expression>
+                </scope>
+                <include syntax="self" collection="keywords" />
+            </subscopes>
+        </scope>
+        
+<!--         <scope name="razor.keywords">
+            <expression>(Model|Html|Umbraco|Partial)</expression>
+            <capture number="1" name="razor.keyword" />
+        </scope> -->
+        <!-- <scope name="razor.output">
+            <expression>((?=@)(@)(?!@))(?:(Model|Html|Umbraco)\.)?([^\s@()-]+)</expression>
+            <capture number="1" name="razor.operator" />
+            <capture number="2" name="razor.keyword" />
+            <capture number="3" name="razor.identifier" />
+        </scope> -->
+    </template-scopes>
+    
+    <collections>
+        <collection name="keywords">
+            <scope name="razor.keyword">
+                <strings>
+                    <string>Model</string>
+                    <string>Partial</string>
+                    <string>Html</string>
+                </strings>
+            </scope>
+            <scope name="umbraco.keyword">
+                <strings>
+                    <string>Umbraco</string>
+                    <string>Helpers</string>
+                    <string>MediaHelper</string>
+                    <string>Children</string>
+                    <string>Where</string>
+                </strings>
+            </scope>
+        </collection>
+    </collections>
+    
+</syntax>

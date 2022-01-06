@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completions>
+    <provider name="razor.vv-helpers">
+        <syntax>razor</syntax>
+        <selector>*</selector>
+        <expression>(?&lt;=Helpers\.)[a-zA-Z0-9-_]*</expression>
+        <set>razor.vokseverk.helpers</set>
+    </provider>
+    
+    <set name="razor.vokseverk.helpers">
+        <completion string="GetAssetsFolder()" />
+        <completion string="GetAssetPath($[file])" />
+        <completion string="GetSiteSetting(&quot;$[setting]&quot;)" />
+    </set>
+</completions>
+
+
+<!-- <provider>
+<selector>razor</selector>
+<expression>\b[a-zA-Z0-9-_]*</expression>
+<set>razor.entities</set>
+</provider> -->
+<!-- <provider>
+<syntax>blade</syntax>
+<selector>*:not(comment)</selector>
+<expression>@[a-zA-Z0-9-]*</expression>
+<set>blade.keywords</set>
+<set>blade.keywords.parameters</set>
+</provider> -->
+
+<!-- Entities -->
+<!-- <set name="razor.entities">
+<completion string="&quot;" />
+<completion string="&amp;" />
+<completion string="&apos;" />
+<completion string="&lt;" />
+<completion string="&gt;" />
+</set>
+
+<set name="razor.umbraco.keywords">
+<completion string="IEnumerable" />
+<completion string="IPublishedContent" />
+<completion string="UrlSegment" />
+<completion string="Value" />
+<completion string="GetPropertyValue" />
+<completion string="Model" />
+<completion string="HasValue" />
+<completion string="Content" />
+<completion string="Children" />
+<completion string="Ancestor" />
+<completion string="Descendant" />
+<completion string="FirstOrDefault" />
+</set> -->

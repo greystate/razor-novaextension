@@ -1,0 +1,8 @@
+{
+    "identifier": "dk.greystate.Razor",
+    "name": "Razor",
+    "organization": "Greystate",
+    "description": "A language definition for Razor",
+    "version": "1.0",
+    "categories": ["languages"]
+}

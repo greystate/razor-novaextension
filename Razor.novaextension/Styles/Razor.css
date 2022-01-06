@@ -1,0 +1,13 @@
+razor.operator {
+	background: #fdff3b;
+	color: #282627;
+}
+
+razor.output {
+	background: rgba(153, 153, 153, 0.3);
+	color: #000;
+}
+
+razor.keyword {
+	color: #00c0d5;
+}
