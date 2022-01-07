@@ -7,7 +7,7 @@
     </meta>
     
     <detectors>
-        <extension priority="1.5">cshtml</extension>
+        <extension priority="1.0">cshtml</extension>
     </detectors>
     
     <comments>
