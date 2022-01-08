@@ -70,7 +70,7 @@
                 <capture number="1" name="razor.operator" />
             </starts-with>
             <ends-with>
-                <expression>$</expression>
+                <expression>($|\s*?|&lt;)</expression>
             </ends-with>
         </scope>
         
