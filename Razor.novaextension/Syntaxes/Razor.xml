@@ -22,7 +22,7 @@
     </comments>
     
     <brackets>
-        <pair open="&lt;" close="&gt;" />
+        <pair open="{" close="}" />
     </brackets>
     
     <surrounding-pairs>
