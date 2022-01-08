@@ -14,6 +14,12 @@
 	@path
 </p>
 
+<ul>
+	@foreach(var link in links) {
+		<li><a href="@(link.Url)">@(link.Name)</a></li>
+	}
+</ul>
+
 <p data-path="@(path)">
 	@* Hey there *@
 </p>
