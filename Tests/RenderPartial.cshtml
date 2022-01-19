@@ -15,8 +15,10 @@
 </p>
 
 <ul>
-	@foreach(var link in links) {
-		<li><a href="@(link.Url)">@(link.Name)</a></li>
+	@foreach (var link in links) {
+		@if (link != null) {
+			<li><a href="@(link.Url)">@(link.Name)</a></li>
+		}
 	}
 </ul>
 
