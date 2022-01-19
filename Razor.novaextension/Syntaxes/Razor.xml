@@ -64,52 +64,131 @@
             </subscopes>
         </scope>
         
-        <scope name="razor.foreach">
-            <starts-with>
-                <expression>(@)(foreach)</expression>
-                <capture number="1" name="razor.operator"/>
-                <capture number="2" name="razor.keyword"/>
-            </starts-with>
-            <ends-with />
-            <subscopes anchored="true">
-                <scope name="razor.foreach.setup">
-                    <starts-with>
-                        <expression>\(</expression>
-                        <capture number="0" name="razor.foreach.setup.bracket" />
-                    </starts-with>
-                    <ends-with>
-                        <expression>\)</expression>
-                        <capture number="0" name="razor.foreach.setup.bracket" />
-                    </ends-with>
-                    <subscopes>
-                        <include syntax="self" collection="keywords" />
-                    </subscopes>
-                </scope>
-                
-                <scope name="razor.foreach.body">
-                    <starts-with>
-                        <expression>\{</expression>
-                        <capture number="0" name="razor.foreach.body.bracket" />
-                    </starts-with>
-                    <ends-with>
-                        <expression>\}</expression>
-                        <capture number="0" name="razor.foreach.body.bracket" />
-                    </ends-with>
-                    <subscopes>
-                        <include syntax="html" />
-                        <include syntax="csharp" />
-                        <include syntax="self" collection="output" />
-                    </subscopes>
-                </scope>
-            </subscopes>
-        </scope>
-        
+        <include syntax="self" collection="directives" />
+        <include syntax="self" collection="control" />
         <include syntax="self" collection="output" />
         
     </template-scopes>
     
     <collections>
+        <collection name="directives">
+            <scope name="razor.directive">
+                <starts-with>
+                    <expression>(@)(using|inherits|inject)\s+</expression>
+                    <capture number="1" name="razor.operator"/>
+                    <capture number="2" name="razor.keyword.directive"/>
+                </starts-with>
+                <ends-with>
+                    <expression>($)</expression>
+                </ends-with>
+                <subscopes anchored="true">
+                    <include syntax="self" collection="keywords" />
+                </subscopes>
+            </scope>
+        </collection>
+        
+        <collection name="control">
+            <scope name="razor.foreach">
+                <starts-with>
+                    <expression>(@)(foreach)</expression>
+                    <capture number="1" name="razor.operator"/>
+                    <capture number="2" name="razor.keyword"/>
+                </starts-with>
+                <ends-with />
+                
+                <subscopes anchored="true">
+                    <scope name="razor.foreach.setup">
+                        <starts-with>
+                            <expression>\(</expression>
+                            <capture number="0" name="razor.foreach.setup.bracket" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\)</expression>
+                            <capture number="0" name="razor.foreach.setup.bracket" />
+                        </ends-with>
+                        <subscopes>
+                            <include syntax="self" collection="keywords" />
+                        </subscopes>
+                    </scope>
+                    
+                    <scope name="razor.foreach.body">
+                        <starts-with>
+                            <expression>\{</expression>
+                            <capture number="0" name="razor.foreach.body.bracket" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\}</expression>
+                            <capture number="0" name="razor.foreach.body.bracket" />
+                        </ends-with>
+                        <subscopes>
+                            <include syntax="html" />
+                            <include syntax="csharp" />
+                            <include syntax="self" collection="output" />
+                            <include syntax="self" collection="control" />
+                        </subscopes>
+                    </scope>
+                </subscopes>
+            </scope>
+            
+            <scope name="razor.if">
+                <starts-with>
+                    <expression>(@)(if)</expression>
+                    <capture number="1" name="razor.operator"/>
+                    <capture number="2" name="razor.keyword"/>
+                </starts-with>
+                <ends-with />
+                
+                <subscopes anchored="true">
+                    <scope name="razor.if.condition">
+                        <starts-with>
+                            <expression>\(</expression>
+                            <capture number="0" name="razor.if.condition.bracket" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\)</expression>
+                            <capture number="0" name="razor.if.condition.bracket" />
+                        </ends-with>
+                        <subscopes>
+                            <include syntax="self" collection="keywords" />
+                        </subscopes>
+                    </scope>
+                    
+                    <scope name="razor.if.body">
+                        <starts-with>
+                            <expression>\{</expression>
+                            <capture number="0" name="razor.if.body.bracket" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\}</expression>
+                            <capture number="0" name="razor.if.body.bracket" />
+                        </ends-with>
+                        <subscopes>
+                            <include syntax="html" />
+                            <include syntax="csharp" />
+                            <include syntax="self" collection="output" />
+                        </subscopes>
+                    </scope>
+                </subscopes>
+            </scope>
+        </collection>
+    
         <collection name="output">
+            <scope name="razor.output.helper">
+                <starts-with>
+                    <expression>(@)(Html|Umbraco)\.(.*?)\(</expression>
+                    <capture number="1" name="razor.operator" />
+                    <capture number="2" name="razor.keyword.helper" />
+                    <capture number="3" name="razor.function" />
+                </starts-with>
+                <ends-with>
+                    <expression>(\))</expression>
+                    <capture number="1" name="razor.operator" />
+                </ends-with>
+                <subscopes>
+                    
+                </subscopes>
+            </scope>
+            
             <scope name="razor.output">
                 <starts-with>
                     <expression>(@)(?!\()([a-zA-Z0-9\.\_\(\)]+)</expression>
