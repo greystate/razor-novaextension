@@ -1,0 +1,44 @@
+{
+	"clips" : [{
+		"name" : "Razor: Insert value",
+		"trigger" : "val",
+		"content" : "@(${:value})",
+		"scope" : "editor",
+		"syntax" : "razor"
+	},
+	{
+		"name" : "Razor: Define variable",
+		"trigger" : "var",
+		"content" : "var ${1:variableName} = ${2:someValue};",
+		"scope" : "editor",
+		"syntax" : "razor"
+	},
+	{
+		"name" : "Razor: Set currentPage",
+		"trigger" : "cur",
+		"content" : "var currentPage = ${1:Model};",
+		"scope" : "editor",
+		"syntax" : "razor"
+	},
+	{
+		"name" : "Razor: Set siteRoot",
+		"trigger" : "root",
+		"content" : "var siteRoot = ${1:currentPage.Root()};",
+		"scope" : "editor",
+		"syntax" : "razor"
+	},
+	{
+		"name" : "Razor: If",
+		"trigger" : "if",
+		"content" : "@if (${1:link} != ${2:null}) {\n\t$3\n}",
+		"scope" : "editor",
+		"syntax" : "razor"
+	},
+	{
+		"name" : "Razor: Foreach",
+		"trigger" : "for",
+		"content" : "@foreach (var ${1:link} in ${2:links}) {\n\t$3\n}",
+		"scope" : "editor",
+		"syntax" : "razor"
+	}]
+}
