@@ -1,9 +1,8 @@
 @inherits Umbraco.Web.ViewModel<ClassName>
 @{
-
 	// Single line comment
 	var path = Helpers.GetAssetPath(file);
-	
+
 	/*
 	Multi-line comment
 	*/
@@ -11,9 +10,11 @@
 <p>
 	@* Razor comment *@
 	<!-- HTML comment -->
-	
+
 	@path
 </p>
+
+@Html.Partial("Blocks/Cards", collection)
 
 <ul>
 	@foreach (var link in links) {
@@ -22,6 +23,8 @@
 		}
 	}
 </ul>
+
+@MediaHelper.RenderMedia(image, 1200, 400)
 
 <p data-path="@(path)">
 	@* Hey there *@
