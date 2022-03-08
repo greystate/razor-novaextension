@@ -1,3 +1,5 @@
-## Version 1.0
+## Version 0.7
 
+March 2022:
 Initial release
+
