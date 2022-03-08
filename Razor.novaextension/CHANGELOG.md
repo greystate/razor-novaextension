@@ -1,5 +1,9 @@
+## Version 0.8
+
+- Update icon
+
+
 ## Version 0.7
 
-March 2022:
-Initial release
+- Initial release
 
