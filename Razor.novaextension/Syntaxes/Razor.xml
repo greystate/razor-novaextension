@@ -5,11 +5,11 @@
         <type>markup</type>
         <preferred-file-extension>cshtml</preferred-file-extension>
     </meta>
-    
+
     <detectors>
         <extension priority="1.0">cshtml</extension>
     </detectors>
-    
+
     <comments>
         <multiline>
             <starts-with>
@@ -20,11 +20,11 @@
             </ends-with>
         </multiline>
     </comments>
-    
+
     <brackets>
         <pair open="{" close="}" />
     </brackets>
-    
+
     <surrounding-pairs>
         <pair open="&lt;" close="&gt;" />
         <pair open="{" close="}" />
@@ -33,11 +33,11 @@
         <pair open="&apos;" close="&apos;" />
         <pair open="&quot;" close="&quot;" />
     </surrounding-pairs>
-    
+
     <scopes>
         <include syntax="html" />
     </scopes>
-    
+
     <template-scopes>
         <!-- Comments -->
         <scope name="razor.comment.block" spell-check="true">
@@ -48,7 +48,7 @@
                 <expression>\*@</expression>
             </ends-with>
         </scope>
-        
+
         <scope name="razor.code.block">
             <starts-with>
                 <expression>(@\{)</expression>
@@ -63,13 +63,13 @@
                 <include syntax="csharp" />
             </subscopes>
         </scope>
-        
+
         <include syntax="self" collection="directives" />
         <include syntax="self" collection="control" />
         <include syntax="self" collection="output" />
-        
+
     </template-scopes>
-    
+
     <collections>
         <collection name="directives">
             <scope name="razor.directive">
@@ -86,7 +86,7 @@
                 </subscopes>
             </scope>
         </collection>
-        
+
         <collection name="control">
             <scope name="razor.foreach">
                 <starts-with>
@@ -95,7 +95,7 @@
                     <capture number="2" name="razor.keyword"/>
                 </starts-with>
                 <ends-with />
-                
+
                 <subscopes anchored="true">
                     <scope name="razor.foreach.setup">
                         <starts-with>
@@ -110,7 +110,7 @@
                             <include syntax="self" collection="keywords" />
                         </subscopes>
                     </scope>
-                    
+
                     <scope name="razor.foreach.body">
                         <starts-with>
                             <expression>\{</expression>
@@ -129,7 +129,7 @@
                     </scope>
                 </subscopes>
             </scope>
-            
+
             <scope name="razor.if">
                 <starts-with>
                     <expression>(@)(if)</expression>
@@ -137,7 +137,7 @@
                     <capture number="2" name="razor.keyword"/>
                 </starts-with>
                 <ends-with />
-                
+
                 <subscopes anchored="true">
                     <scope name="razor.if.condition">
                         <starts-with>
@@ -152,7 +152,7 @@
                             <include syntax="self" collection="keywords" />
                         </subscopes>
                     </scope>
-                    
+
                     <scope name="razor.if.body">
                         <starts-with>
                             <expression>\{</expression>
@@ -171,11 +171,11 @@
                 </subscopes>
             </scope>
         </collection>
-    
+
         <collection name="output">
             <scope name="razor.output.helper">
                 <starts-with>
-                    <expression>(@)(Html|Umbraco)\.(.*?)\(</expression>
+                    <expression>(@)(Html|Umbraco|Helpers|MediaHelper)\.(.*?)\(</expression>
                     <capture number="1" name="razor.operator" />
                     <capture number="2" name="razor.keyword.helper" />
                     <capture number="3" name="razor.function" />
@@ -185,10 +185,10 @@
                     <capture number="1" name="razor.operator" />
                 </ends-with>
                 <subscopes>
-                    
+
                 </subscopes>
             </scope>
-            
+
             <scope name="razor.output">
                 <starts-with>
                     <expression>(@)(?!\()([a-zA-Z0-9\.\_\(\)]+)</expression>
@@ -198,7 +198,7 @@
                     <expression>($|\s*?|&lt;)</expression>
                 </ends-with>
             </scope>
-            
+
             <scope name="razor.output.wrapped">
                 <starts-with>
                     <expression>(@\()</expression>
@@ -216,7 +216,7 @@
                 </subscopes>
             </scope>
         </collection>
-    
+
         <collection name="keywords">
             <scope name="razor.keyword">
                 <strings>
@@ -227,14 +227,14 @@
                     <string>Raw</string>
                 </strings>
             </scope>
-            
+
             <scope name="razor.keyword.construct">
                 <strings>
                     <string>var</string>
                     <string>in</string>
                 </strings>
             </scope>
-            
+
             <scope name="umbraco.keyword">
                 <strings>
                     <string>Umbraco</string>
@@ -246,5 +246,5 @@
             </scope>
         </collection>
     </collections>
-    
+
 </syntax>
