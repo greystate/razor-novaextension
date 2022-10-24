@@ -3,6 +3,7 @@
 	// Single line comment
 	var path = Helpers.GetAssetPath(file);
 
+	var currentPage = Model;
 	/*
 	Multi-line comment
 	*/
@@ -29,3 +30,7 @@
 <p data-path="@(path)">
 	@* Hey there *@
 </p>
+
+<partial name="Blocks/RenderBlocks" model="currentPage" />
+
+
