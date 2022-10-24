@@ -67,6 +67,7 @@
         <include syntax="self" collection="directives" />
         <include syntax="self" collection="control" />
         <include syntax="self" collection="output" />
+        <include syntax="self" collection="taghelpers" />
 
     </template-scopes>
 
@@ -169,6 +170,30 @@
                         </subscopes>
                     </scope>
                 </subscopes>
+            </scope>
+        </collection>
+
+        <collection name="taghelpers">
+            <scope name="razor.output.taghelper.partial">
+                <starts-with>
+                    <expression>(&lt;partial)\s+</expression>
+                    <capture number="1" name="razor.keyword" />
+                </starts-with>
+
+                <ends-with>
+                    <expression>\s*(\/&gt;)</expression>
+                    <capture number="1" name="razor.keyword" />
+                </ends-with>
+
+                <subscopes>
+                    <scope name="razor.taghelper.attribute">
+                        <expression>(name|for|model|view-data)(=)(".*?")</expression>
+                        <capture number="1" name="xml.tag.attribute.name" />
+                        <capture number="2" name="xml.tag.attribute.operator" />
+                        <capture number="3" name="xml.tag.attribute.value" />
+                    </scope>
+                </subscopes>
+
             </scope>
         </collection>
 
