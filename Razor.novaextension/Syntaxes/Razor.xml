@@ -36,6 +36,7 @@
 
     <scopes>
         <include syntax="html" />
+        <include syntax="csharp" />
     </scopes>
 
     <template-scopes>
@@ -60,7 +61,8 @@
             </ends-with>
             <subscopes>
                 <include syntax="self" collection="keywords" />
-                <include syntax="csharp" />
+                <include syntax="self" collection="strings" />
+                <include syntax="self" collection="comments" />
             </subscopes>
         </scope>
 
@@ -181,7 +183,7 @@
                 </starts-with>
 
                 <ends-with>
-                    <expression>\s*(\/&gt;)</expression>
+                    <expression>\s*(\/?&gt;)</expression>
                     <capture number="1" name="razor.keyword" />
                 </ends-with>
 
@@ -203,7 +205,7 @@
                     <expression>(@)(Html|Umbraco|Helpers|MediaHelper)\.(.*?)\(</expression>
                     <capture number="1" name="razor.operator" />
                     <capture number="2" name="razor.keyword.helper" />
-                    <capture number="3" name="razor.function" />
+                    <capture number="3" name="razor.identifier.function" />
                 </starts-with>
                 <ends-with>
                     <expression>(\))</expression>
@@ -257,6 +259,11 @@
                 <strings>
                     <string>var</string>
                     <string>in</string>
+                    <string>bool</string>
+                    <string>int</string>
+                    <string>double</string>
+                    <string>decimal</string>
+                    <string>string</string>
                 </strings>
             </scope>
 
@@ -267,7 +274,36 @@
                     <string>MediaHelper</string>
                     <string>Children</string>
                     <string>Where</string>
+                    <string>IPublishedContent</string>
+                    <string>IPublishedElement</string>
                 </strings>
+            </scope>
+        </collection>
+
+        <collection name="strings">
+            <scope name="razor.string">
+                <starts-with>
+                    <expression>(&quot;)</expression>
+                    <capture number="1" name="razor.literal"/>
+                </starts-with>
+                <ends-with>
+                    <expression>(&quot;)</expression>
+                    <capture number="1" name="razor.literal"/>
+                </ends-with>
+            </scope>
+        </collection>
+
+        <collection name="comments">
+            <scope name="razor.comment.multiline">
+                <starts-with>
+                    <expression>(\/\*)</expression>
+                </starts-with>
+                <ends-with>
+                    <expression>(\*\/)</expression>
+                </ends-with>
+            </scope>
+            <scope name="razor.comment.singleline">
+                <expression>\/\/.*$</expression>
             </scope>
         </collection>
     </collections>
