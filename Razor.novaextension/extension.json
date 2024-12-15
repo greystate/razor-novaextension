@@ -3,7 +3,7 @@
     "name": "Razor",
     "organization": "Greystate",
     "description": "A language definition for Razor",
-    "version": "0.8",
+    "version": "0.9",
     "repository": "https://github.com/greystate/razor-novaextension",
     "bugs": "https://github.com/greystate/razor-novaextension/issues",
     "categories": ["languages", "clips"]
